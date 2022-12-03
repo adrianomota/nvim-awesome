@@ -15,6 +15,12 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 --save file
 keymap.set('n', '<C-s>', ':w<CR>')
 
+
+-- nvimtree
+keymap.set("n", "<leader>t", "<cmd> NvimTreeToggle <CR>") -- "	toggle nvimtree",
+keymap.set("n", "<leader>f", "<cmd> NvimTreeFocus <CR>") -- "	focus nvimtree"
+
+
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 

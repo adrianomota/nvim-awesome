@@ -49,21 +49,27 @@ vim.keymap.set('n', '<C-P>',
       hidden = true
     })
   end)
-vim.keymap.set('n', '<C-f>', function()
+
+  vim.keymap.set('n', '<C-f>', function()
   builtin.live_grep()
 end)
+
 vim.keymap.set('n', '<C-B>', function()
   builtin.buffers()
 end)
+
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()
 end)
+
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end)
+
 vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
 end)
+
 vim.keymap.set("n", "<C-N>", function()
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
