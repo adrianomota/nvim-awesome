@@ -14,7 +14,6 @@ ts.setup {
     "tsx",
     "toml",
     "rust",
-    "php",
     "json",
     "yaml",
     "elixir",
@@ -22,7 +21,8 @@ ts.setup {
     "heex",
     "css",
     "html",
-    "lua"
+    "lua",
+    "haskell"
   },
   autotag = {
     enable = true,

@@ -84,6 +84,11 @@ nvim_lsp.sourcekit.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.hls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 nvim_lsp.elixirls.setup {
   cmd= { "/home/elliot/.elixir-ls/release/language_server.sh" },
   on_attach = on_attach,
