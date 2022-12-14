@@ -90,7 +90,7 @@ nvim_lsp.hls.setup {
 }
 
 nvim_lsp.elixirls.setup {
-  cmd= { "/home/elliot/.elixir-ls/release/language_server.sh" },
+  cmd = { "/home/elliot/.elixir-ls/release/language_server.sh" },
   on_attach = on_attach,
   capabilities = capabilities,
 }
