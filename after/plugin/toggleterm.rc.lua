@@ -57,7 +57,7 @@ function _HTOP()
 	htop:toggle()
 end
 
-local elixir = Terminal:new({ cmd = "iex", hidden = true })
+local elixir = Terminal:new({ cmd = "iex -S mix", hidden = true })
 
 function _MIX()
 	elixir:toggle()
