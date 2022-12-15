@@ -43,5 +43,6 @@ keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
 
---Nvim-tree
-keymap.set('n','<Space>n', ':NvimTreeToggle<cr>')
+
+--Toggle
+keymap.set('n', 'tt', ':lua _MIX() <CR>')
