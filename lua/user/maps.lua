@@ -44,4 +44,4 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 
 
 --Toggle
-keymap.set('n', 'tt', ':lua _MIX() <CR>')
+keymap.set('n', 'ee', ':lua _MIX() <CR>')
