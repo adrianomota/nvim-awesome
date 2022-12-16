@@ -11,7 +11,13 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
+    file_ignore_patterns = {
+      ".git",
+      -- all your ignore settings come here
+      "**/node_modules/**",
+    },
     mappings = {
+
       n = {
         ["q"] = actions.close
       },
@@ -50,7 +56,7 @@ vim.keymap.set('n', '<C-P>',
     })
   end)
 
-  vim.keymap.set('n', '<C-f>', function()
+vim.keymap.set('n', '<C-f>', function()
   builtin.live_grep()
 end)
 
