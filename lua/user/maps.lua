@@ -43,5 +43,6 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 
 
 
---Toggle
+--Toggle Term
 keymap.set('n', 'ee', ':lua _MIX() <CR>')
+keymap.set('n', 'px', ':lua _MIX_PHOENIX() <CR>')

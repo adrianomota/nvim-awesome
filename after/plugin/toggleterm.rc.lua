@@ -62,3 +62,9 @@ local elixir = Terminal:new({ cmd = "iex -S mix", hidden = true })
 function _MIX()
 	elixir:toggle()
 end
+
+local phoenix = Terminal:new({ cmd = "iex -S phx.server", hidden = true })
+
+function _MIX_PHOENIX()
+	phoenix:toggle()
+end
