@@ -84,6 +84,19 @@ nvim_lsp.sourcekit.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.efm.setup {
+  filetypes = {
+    "elixir",
+    "javascript",
+    "typescript",
+    "lua",
+    "bash",
+    "zsh",
+    "sh",
+    "sql",
+  }
+}
+
 nvim_lsp.hls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
