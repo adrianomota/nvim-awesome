@@ -1,9 +1,11 @@
 --vim.lsp.set_log_level("debug")
 
 local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
+if not status then
+  return
+end
 
-local protocol = require('vim.lsp.protocol')
+local protocol = require("vim.lsp.protocol")
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
@@ -20,7 +22,9 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
 
   --Enable completion triggered by <c-x><c-o>
   --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -30,85 +34,77 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
 protocol.CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
+  "", -- Text
+  "", -- Method
+  "", -- Function
+  "", -- Constructor
+  "", -- Field
+  "", -- Variable
+  "", -- Class
+  "ﰮ", -- Interface
+  "", -- Module
+  "", -- Property
+  "", -- Unit
+  "", -- Value
+  "", -- Enum
+  "", -- Keyword
+  "﬌", -- Snippet
+  "", -- Color
+  "", -- File
+  "", -- Reference
+  "", -- Folder
+  "", -- EnumMember
+  "", -- Constant
+  "", -- Struct
+  "", -- Event
+  "ﬦ", -- Operator
+  "", -- TypeParameter
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-nvim_lsp.flow.setup {
+nvim_lsp.flow.setup({
   on_attach = on_attach,
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.tsserver.setup({
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
-nvim_lsp.sourcekit.setup {
+nvim_lsp.sourcekit.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
-nvim_lsp.efm.setup {
-  filetypes = {
-    "elixir",
-    "javascript",
-    "typescript",
-    "lua",
-    "bash",
-    "zsh",
-    "sh",
-    "sql",
-  }
-}
-
-nvim_lsp.hls.setup {
+nvim_lsp.hls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
-nvim_lsp.elixirls.setup {
+nvim_lsp.elixirls.setup({
   cmd = { "/home/elliot/.elixir-ls/release/language_server.sh" },
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.clangd.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
@@ -118,19 +114,19 @@ nvim_lsp.sumneko_lua.setup {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = { "vim" },
       },
 
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+        checkThirdParty = false,
       },
     },
   },
-}
+})
 
-nvim_lsp.tailwindcss.setup {
+nvim_lsp.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 
@@ -150,20 +146,19 @@ nvim_lsp.tailwindcss.setup {
     },
   },
   filetypes = { "elixir", "eelixir", "html", "liquid", "heex" },
-}
+})
 
-nvim_lsp.cssls.setup {
+nvim_lsp.cssls.setup({
   on_attach = on_attach,
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
 -- nvim_lsp.astro.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities
 -- }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
@@ -179,7 +174,7 @@ end
 
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●'
+    prefix = "●",
   },
   update_in_insert = true,
   float = {

@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/elliot/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  ["deoplete-clang"] = {
+    loaded = true,
+    path = "/home/elliot/.local/share/nvim/site/pack/packer/start/deoplete-clang",
+    url = "https://github.com/deoplete-plugins/deoplete-clang"
+  },
   ["git.nvim"] = {
     loaded = true,
     path = "/home/elliot/.local/share/nvim/site/pack/packer/start/git.nvim",
@@ -218,6 +223,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/elliot/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["vim-mix-format"] = {
+    loaded = true,
+    path = "/home/elliot/.local/share/nvim/site/pack/packer/start/vim-mix-format",
+    url = "https://github.com/mhinz/vim-mix-format"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
